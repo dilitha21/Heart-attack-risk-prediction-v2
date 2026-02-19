@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Heart Risk Check</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="wrap">
+      <header class="header">
+        <p class="kicker">🏥 Medical Risk Assessment</p>
+        <h1>Cardiac Risk Evaluation</h1>
+        <p class="sub">Comprehensive heart attack risk prediction using advanced machine learning algorithms to support clinical decision-making.</p>
+      </header>
+
+      <section class="card">
+        <form id="risk-form" class="form-grid">
+          <div class="field">
+            <label for="age">👤 Age</label>
+            <input type="number" id="age" name="Age" min="18" max="100" required />
+          </div>
+          <div class="field">
+            <label for="gender">⚧ Gender</label>
+            <select
+              id="gender"
+              name="Gender"
+              data-options="Gender"
+              data-placeholder="Select gender"
+              required
+            >
+              <option value="" disabled selected>Select gender</option>
+              {% for option in category_options["Gender"] %}
+              <option value="{{ option }}">{{ option }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="field">
+            <label for="cholesterol">🔬 Cholesterol (mg/dL)</label>
+            <input
+              type="number"
+              id="cholesterol"
+              name="Cholesterol"
+              min="80"
+              max="400"
+              required
+            />
+          </div>
+          <div class="field">
+            <label for="blood-pressure">💉 Blood Pressure (mmHg)</label>
+            <input
+              type="number"
+              id="blood-pressure"
+              name="Blood Pressure"
+              min="60"
+              max="220"
+              required
+            />
+          </div>
+          <div class="field">
+            <label for="smoking">🚬 Smoking Status</label>
+            <select
+              id="smoking"
+              name="Smoking"
+              data-options="Smoking"
+              data-placeholder="Select smoking"
+              required
+            >
+              <option value="" disabled selected>Select smoking</option>
+              {% for option in category_options["Smoking"] %}
+              <option value="{{ option }}">{{ option }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="field">
+            <label for="obesity">⚖️ Obesity Status</label>
+            <select
+              id="obesity"
+              name="Obesity"
+              data-options="Obesity"
+              data-placeholder="Select obesity"
+              required
+            >
+              <option value="" disabled selected>Select obesity</option>
+              {% for option in category_options["Obesity"] %}
+              <option value="{{ option }}">{{ option }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="field">
+            <label for="diabetes">💊 Diabetes Status</label>
+            <select
+              id="diabetes"
+              name="Diabetes"
+              data-options="Diabetes"
+              data-placeholder="Select diabetes"
+              required
+            >
+              <option value="" disabled selected>Select diabetes</option>
+              {% for option in category_options["Diabetes"] %}
+              <option value="{{ option }}">{{ option }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="field">
+            <label for="previous-heart">❤️ Previous Heart Problems</label>
+            <select
+              id="previous-heart"
+              name="Previous Heart Problems"
+              data-options="Previous Heart Problems"
+              data-placeholder="Select history"
+              required
+            >
+              <option value="" disabled selected>Select history</option>
+              {% for option in category_options["Previous Heart Problems"] %}
+              <option value="{{ option }}">{{ option }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="field">
+            <label for="medication">💊 Medication Use</label>
+            <select
+              id="medication"
+              name="Medication Use"
+              data-options="Medication Use"
+              data-placeholder="Select medication"
+              required
+            >
+              <option value="" disabled selected>Select medication</option>
+              {% for option in category_options["Medication Use"] %}
+              <option value="{{ option }}">{{ option }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="field">
+            <label for="activity">🏃 Physical Activity Level</label>
+            <div class="range-wrap">
+              <input
+                type="range"
+                id="activity"
+                name="Physical Activity Level"
+                min="0"
+                max="4"
+                step="1"
+                value="2"
+                required
+              />
+              <span class="range-value" id="activity-value">2</span>
+            </div>
+          </div>
+          <div class="field action">
+            <button type="submit">🔍 Analyze Risk</button>
+            <p class="hint">⚠️ All fields are required for accurate assessment</p>
+          </div>
+        </form>
+
+        <div class="result" id="result">
+          <div>
+            <p class="result-label">📊 Risk Assessment</p>
+            <p class="result-value" id="risk-level">--</p>
+          </div>
+          <div>
+            <p class="result-label">📈 Probability</p>
+            <p class="result-value" id="risk-probability">--</p>
+          </div>
+          <div>
+            <p class="result-label">✓ Model Accuracy</p>
+            <p class="result-value" id="model-accuracy">--</p>
+          </div>
+          <div class="result-note" id="result-note">
+            ℹ️ Complete the form above to generate a comprehensive risk assessment.
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>

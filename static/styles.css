@@ -1,0 +1,344 @@
+/* ==========================================
+   HEART RISK PREDICTION - MEDICAL INTERFACE
+   Professional healthcare design with clinical colors
+   ========================================== */
+
+/* CSS Custom Properties (Variables) for medical theming */
+:root {
+  --primary-blue: #0066CC;                 /* Primary medical blue */
+  --primary-dark: #004C99;                 /* Darker blue for accents */
+  --secondary-teal: #00A6A6;               /* Healthcare teal */
+  --accent-green: #00C896;                 /* Success/health green */
+  --ink: #1a2b3c;                          /* Primary text color */
+  --muted: #5a7184;                        /* Secondary text color */
+  --surface: #f7fafc;                      /* Input background */
+  --card: #ffffff;                         /* Card background */
+  --border: #d4e1eb;                       /* Border color */
+  --bg-light: #e8f4f8;                     /* Light background */
+  --shadow: 0 4px 20px rgba(0, 102, 204, 0.08);  /* Subtle shadow */
+  --shadow-hover: 0 8px 30px rgba(0, 102, 204, 0.15);
+  --danger: #dc2626;                       /* High risk indicator */
+  --warning: #f59e0b;                      /* Medium risk */
+}
+
+/* Reset default browser styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Body with clean medical background */
+body {
+  font-family: "Sora", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: linear-gradient(135deg, #e8f4f8 0%, #f0f7fb 50%, #ffffff 100%);
+  min-height: 100vh;
+}
+
+/* Main container with max width and padding */
+.wrap {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px 80px;
+}
+
+/* Header section styling */
+.header {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 36px;
+  padding: 28px 36px;
+  background: linear-gradient(135deg, var(--primary-blue), var(--secondary-teal));
+  border-radius: 16px;
+  color: white;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.header::before {
+  content: "⚕";
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 5rem;
+  opacity: 0.15;
+}
+
+/* Small uppercase label above title */
+.kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+}
+
+/* Main heading with responsive font size */
+.header h1 {
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  color: white;
+}
+
+/* Subtitle text */
+.sub {
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 520px;
+  font-size: 0.95rem;
+}
+
+/* White card container with shadow */
+.card {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 36px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  display: grid;
+  gap: 32px;
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+/* Two-column grid for form fields */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 24px;
+}
+
+/* Individual form field styling */
+.field {
+  display: grid;
+  gap: 8px;
+}
+
+/* Field labels */
+.field label {
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Input and select field styling */
+.field input,
+.field select {
+  padding: 11px 14px;
+  border-radius: 8px;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  font-size: 0.93rem;
+  color: var(--ink);
+  transition: all 0.2s ease;
+}
+
+.field input:hover,
+.field select:hover {
+  border-color: var(--secondary-teal);
+}
+
+/* Range slider container */
+.range-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Range slider styling */
+.range-wrap input[type="range"] {
+  flex: 1;
+  accent-color: var(--secondary-teal);
+  height: 7px;
+}
+
+/* Range value display badge */
+.range-value {
+  min-width: 40px;
+  text-align: center;
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: var(--bg-light);
+  color: var(--primary-blue);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: 1px solid var(--border);
+}
+
+/* Focus state for inputs and selects */
+.field input:focus,
+.field select:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+/* Full-width field for submit button */
+.field.action {
+  grid-column: span 2;
+  display: grid;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+/* Submit button with gradient and hover effects */
+button {
+  background: linear-gradient(135deg, var(--primary-blue), var(--secondary-teal));
+  color: #fff;
+  border: none;
+  padding: 15px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.25);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Button hover animation */
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 102, 204, 0.35);
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary-blue));
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Disabled button state */
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Hint text below form fields */
+.hint {
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+/* Results display section with medical styling */
+.result {
+  background: linear-gradient(135deg, #f0f7fb 0%, #e8f4f8 100%);
+  border-radius: 12px;
+  padding: 28px;
+  border: 2px solid var(--border);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  align-items: center;
+  box-shadow: inset 0 2px 8px rgba(0, 102, 204, 0.05);
+}
+
+/* Result field labels */
+.result-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+/* Result values (risk, probability, accuracy) */
+.result-value {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--primary-blue);
+}
+
+/* Result status message */
+.result-note {
+  font-size: 0.88rem;
+  color: var(--muted);
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 12px;
+  background: white;
+  border-radius: 8px;
+  border: 1px dashed var(--border);
+}
+
+/* Responsive design for mobile devices */
+@media (max-width: 900px) {
+  .wrap {
+    padding: 24px 16px 60px;
+  }
+
+  .header {
+    padding: 22px 24px;
+  }
+
+  .header::before {
+    font-size: 3.5rem;
+    right: 20px;
+  }
+
+  .card {
+    padding: 24px;
+  }
+
+  /* Single column layout on mobile */
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .field.action {
+    grid-column: span 1;
+  }
+
+  /* Stack result items vertically */
+  .result {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+}
+
+/* Additional medical styling enhancements */
+select {
+  cursor: pointer;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  opacity: 1;
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+button,
+.card {
+  transition: all 0.3s ease;
+}
+
+/* Add subtle pulse animation to primary button */
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 4px 12px rgba(0, 102, 204, 0.25);
+  }
+  50% {
+    box-shadow: 0 4px 16px rgba(0, 102, 204, 0.35);
+  }
+}
+
+button:not(:disabled):hover {
+  animation: pulse 2s infinite;
+}
